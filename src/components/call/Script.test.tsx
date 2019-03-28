@@ -61,7 +61,7 @@ describe('getContactNameWithTitle', () => {
   const contacts: Contact[] = [
     Object.assign(new Contact(), {
       id: '293',
-      area: 'House',
+      area: 'US House',
       name: 'Googly Moogly',
       phone: '',
       state: '',
@@ -70,7 +70,7 @@ describe('getContactNameWithTitle', () => {
     }),
     Object.assign(new Contact(), {
       id: '666',
-      area: 'Senate',
+      area: 'US Senate',
       name: 'Damian Longhoof',
       phone: '',
       state: '',

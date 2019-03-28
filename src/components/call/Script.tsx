@@ -19,9 +19,11 @@ const locationReg = /\[CITY,\s?ZIP\]|\[CITY,\s?STATE\]/gi;
 function getContactNameWithTitle(contact: Contact) {
   let title = '';
   switch (contact.area) {
+    case 'US House':
     case 'House':
       title = 'Rep. ';
       break;
+    case 'US Senate':
     case 'Senate':
       title = 'Senator ';
       break;
