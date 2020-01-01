@@ -4,7 +4,7 @@ import { waitForReact, ReactSelector } from 'testcafe-react-selectors';
 const getWindowLocation = ClientFunction(() => window.location.href);
 
 fixture`Footer`.page`http://localhost:3000`.beforeEach(async () => {
-  await waitForReact(15000);
+  waitForReact(15000);
 });
 
 // tslint:disable-next-line:no-shadowed-variable
@@ -58,14 +58,14 @@ test('Footer displays right links', async t => {
   const rightLinks = await rightContainer.find('li');
 
   const count = await rightLinks.count;
-  await t.expect(count).eql(2);
+  await t.expect(count).eql(3);
 
   const impact = rightLinks.nth(0);
   const impactLink = impact.find('a');
   await t.expect(impactLink.getAttribute('href')).eql('/impact');
   await t.expect(impactLink.innerText).eql('Your Impact');
 
-  const support = rightLinks.nth(1);
+  const support = rightLinks.nth(2);
   const supportLink = support.find('a');
   await t
     .expect(supportLink.getAttribute('href'))
@@ -73,18 +73,4 @@ test('Footer displays right links', async t => {
   await t.expect(supportLink.innerText).eql('Be a Supporter');
   const supportLabel = await supportLink.find('.fa fa-money');
   await t.expect(supportLabel).ok();
-});
-
-// tslint:disable-next-line:no-shadowed-variable
-test('Footer center copyright and link is shown', async t => {
-  const Footer = await ReactSelector('Footer');
-  await t.expect(Footer).ok('Footer is displayed');
-  const colophon = await Selector('.colophon');
-  const centerContainer = await colophon.find('.colophon__center');
-  const centerItems = await centerContainer.find('p');
-
-  let expectedText = '© 2019 5 Calls Civic Action is a 501(c)4 non-profit ';
-  expectedText += 'that helps citizens make their voices heard.';
-  const copyright = centerItems.nth(0);
-  await t.expect(copyright.innerText).eql(expectedText);
 });

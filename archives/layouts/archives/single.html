@@ -1,0 +1,25 @@
+{{ define "title" }}{{ .Title }}: 5 Calls{{ end }}
+{{ define "meta" }}
+  <meta itemprop="name" content="{{ .Title }}: 5 Calls">
+  <meta itemprop="image" content="http://5callsorg-shareimages.s3-website-us-west-1.amazonaws.com/{{ .Params.issue_id }}.png">
+  <meta name="twitter:title" content="{{ .Title }}:  5 Calls">
+  <meta name="twitter:image:src" content="http://5callsorg-shareimages.s3-website-us-west-1.amazonaws.com/{{ .Params.issue_id }}.png">
+  <meta property="og:title" content="{{ .Title }}: 5 Calls">
+  <meta property="og:image" content="http://5callsorg-shareimages.s3-website-us-west-1.amazonaws.com/{{ .Params.issue_id }}.png">
+{{ end }}
+{{ define "main" }}
+<main id="content" role="main" aria-live="polite" class="layout__main archive__single">
+    <section class="call">
+        <header class="call__header">
+            <h1 class="call__title">{{ .Title }}</h1>
+            <blockquote class="call__archived">
+              <h3>🏛 This topic is archived</h3>
+              <p>You’re viewing a topic that isn’t worth calling on anymore. It either passed, failled or is otherwise stuck and unlikely to move forward. If this information changes, we’ll open this topic to calls again.</p>
+            </blockquote>
+            <div class="call__reason">
+                {{ .Content }}
+            </div>
+        </header>
+    </section>
+</main>
+{{ end }}

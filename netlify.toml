@@ -1,6 +1,16 @@
 [Settings]
 ID = "5calls"
 
+[context.production.environment]
+  HUGO_VERSION = "0.62.0"
+
+[context.deploy-preview.environment]
+  HUGO_VERSION = "0.62.0"
+  PUBLIC_URL = "/"
+
+[build]
+command = "yarn build && cd archives && hugo"
+
 [[redirects]]
   from = "/issues/"
   query = {address = ":address", all = ":all"}
@@ -41,14 +51,11 @@ ID = "5calls"
   status = 200
 
 [[redirects]]
-  from = "/admin/refresh"
-  to = "http://167.99.163.163:8080/admin/refresh"
+  from = "/archives/*"
+  to = "/archives/:splat"
   status = 200
 
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[context.deploy-preview.environment]
-  PUBLIC_URL = "/"

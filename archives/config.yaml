@@ -1,0 +1,6 @@
+title: "5 Calls"
+baseURL: ""
+languageCode: "en-us"
+publishDir: "../build" # "public"
+disableKinds: ["RSS","sitemap","home","taxonomy","taxonomyTerm"]
+staticDir: "fakestatic" # disable when testing locally to get the static images for the site to look good
