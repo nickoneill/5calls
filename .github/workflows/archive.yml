@@ -16,3 +16,6 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
     - run: cd tools/archiveSync && go get . && go run main.go
+      env:
+        FIVECALLS_RDS_URL: ${{ secrets.FIVECALLS_RDS_URL }}
+        FIVECALLS_RDS_READ_PASS: ${{ secrets.FIVECALLS_RDS_READ_PASS }}
