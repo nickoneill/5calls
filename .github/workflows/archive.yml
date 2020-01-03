@@ -15,6 +15,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Hello, world!
+    - run: wget -qO- https://ipecho.net/plain ; echo
     - run: cd tools/archiveSync && go get . && go run main.go
       env:
         FIVECALLS_RDS_URL: ${{ secrets.FIVECALLS_RDS_URL }}
