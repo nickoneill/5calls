@@ -15,5 +15,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Run a one-line script
       run: echo Hello, world!
+    - run: cd tools/archiveSync
+    - run: go get .
     - name: Grab files for archiving
-      run: go run tools/archiveSync/main.go
+      run: go run main.go
