@@ -17,4 +17,4 @@ jobs:
       run: echo Hello, world!
     - run: cd tools/archiveSync && go get .
     - name: Grab files for archiving
-      run: go run main.go
+      run: go run tools/archiveSync/main.go
