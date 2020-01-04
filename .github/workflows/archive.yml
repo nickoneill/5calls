@@ -14,8 +14,9 @@ jobs:
         version: 1.13
     - uses: actions/checkout@v1
     - uses: geertvdc/setup-hub@master
-    - name: Run a one-line script
-      run: echo Hello, world!
+    - uses: fregante/setup-git-token@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
     - run: cd tools/archiveSync && go get . && go run main.go
       env:
         FIVECALLS_RDS_URL: ${{ secrets.FIVECALLS_RDS_URL }}
