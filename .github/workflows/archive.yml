@@ -26,4 +26,6 @@ jobs:
         git config --local user.name "GitHub Action"
     - run: git diff archives/content/
     - run: git checkout -b archive-01-01-20 && git add archives/content/ && git commit -m "updated stuff" && hub pull-request -p -l archive -m "Archive topics update"
-      
+      env:
+        GITHUB_USER: ${{ secrets.GITHUB_USER }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
