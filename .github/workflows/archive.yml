@@ -20,3 +20,4 @@ jobs:
       env:
         FIVECALLS_RDS_URL: ${{ secrets.FIVECALLS_RDS_URL }}
         FIVECALLS_RDS_READ_PASS: ${{ secrets.FIVECALLS_RDS_READ_PASS }}
+    - run: git diff
