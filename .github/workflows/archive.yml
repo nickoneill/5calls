@@ -13,6 +13,7 @@ jobs:
       with:
         version: 1.13
     - uses: actions/checkout@v1
+    - uses: geertvdc/setup-hub@master
     - name: Run a one-line script
       run: echo Hello, world!
     - run: cd tools/archiveSync && go get . && go run main.go
@@ -20,6 +21,5 @@ jobs:
         FIVECALLS_RDS_URL: ${{ secrets.FIVECALLS_RDS_URL }}
         FIVECALLS_RDS_READ_PASS: ${{ secrets.FIVECALLS_RDS_READ_PASS }}
     - run: git diff archives/content/
-    - uses: geertvdc/setup-hub@master
-    - run: git checkout -b archive-01-01-20 && git add archives/content/ && git commit -m “updated stuff” && hub pull-request -p -l archive -m “Archive topics update”
-      if: git diff --quiet
+    - run: git diff --quiet || (git checkout -b archive-01-01-20 && git add archives/content/ && git commit -m “updated stuff” && hub pull-request -p -l archive -m “Archive topics update”)
+      
