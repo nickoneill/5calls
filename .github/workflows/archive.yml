@@ -20,6 +20,13 @@ jobs:
       env:
         FIVECALLS_RDS_URL: ${{ secrets.FIVECALLS_RDS_URL }}
         FIVECALLS_RDS_READ_PASS: ${{ secrets.FIVECALLS_RDS_READ_PASS }}
+    - name: Test for changes
+      if: !(git diff --quiet)
+      run: exit 78
+    - name: Configure
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
     - run: git diff archives/content/
-    - run: git diff --quiet || (git checkout -b archive-01-01-20 && git add archives/content/ && git commit -m "updated stuff" && hub pull-request -p -l archive -m "Archive topics update")
+    - run: git checkout -b archive-01-01-20 && git add archives/content/ && git commit -m "updated stuff" && hub pull-request -p -l archive -m "Archive topics update"
       
