@@ -14,10 +14,10 @@ jobs:
       with:
         version: 1.13
     - uses: geertvdc/setup-hub@master # setup running hub cli
+    - uses: actions/checkout@v1 
     - uses: fregante/setup-git-token@v1 # auth git with github token
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-    - uses: actions/checkout@v1 
     - run: cd tools/archiveSync && go get . && go run main.go
       env:
         FIVECALLS_RDS_URL: ${{ secrets.FIVECALLS_RDS_URL }}
