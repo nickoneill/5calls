@@ -2,7 +2,7 @@ name: Update Archive
 
 on:
   schedule:
-    - cron: '2 8 * * *' # midnight pacific
+    - cron: '1 18 * * *' # just before midnight pacific
 
 jobs:
   build:
