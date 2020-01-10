@@ -26,11 +26,15 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-    - run: git diff archives/content/ # for our use right now, but this should exit if we there's no diff here
-    - run: branch_name=$(date +'%m-%d-%Y') && git checkout -b archive-${branch_name} # set new branch name to day
-    - run: git add archives/content/ # add only content from this directory
-    - run: git commit -m "updated archive content"
-    - run: hub pull-request -p -l archive -m "Archive topics update" # make a new pull request with the results
+    - run: git diff archives/content/ --quiet
+    - name: PR if changes exist
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        if [ $? -ne 0 ]; then
+          branch_name=$(date +'%m-%d-%Y') && git checkout -b archive-${branch_name} # set new branch name to day
+          git add archives/content/ # add only content from this directory
+          git commit -m "updated archive content"
+          hub pull-request -p -l archive -m "Archive topics update" # make a new pull request with the results
+        fi
