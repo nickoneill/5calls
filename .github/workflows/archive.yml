@@ -26,9 +26,9 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-    - name: debug diff output for why build is failing
-      run: git diff archives/content/
-    - run: git diff --quiet archives/content/
+    - name: diff content directory, always succeed so we can test the next step
+      run: git diff --quiet archives/content/
+      if: succeeded() || failed()
     - name: PR if changes exist
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
