@@ -26,6 +26,8 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+    - name: debug diff output for why build is failing
+      run: git diff
     - run: git diff --quiet archives/content/
     - name: PR if changes exist
       env:
