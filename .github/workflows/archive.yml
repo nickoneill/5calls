@@ -28,15 +28,13 @@ jobs:
         git config --local user.name "GitHub Action"
     - name: diff content directory, always succeed so we can test the next step
       run: git diff --quiet archives/content/
-      if: success() || failure()
     - name: PR if changes exist
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        if [ $? -ne 0 ]; then
-          branch_name=$(date +'%m-%d-%Y') && git checkout -b archive-${branch_name} # set new branch name to day
-          git add archives/content/ # add only content from this directory
-          git commit -m "updated archive content"
-          hub pull-request -p -l archive -m "Archive topics update" # make a new pull request with the results
-        fi
+        branch_name=$(date +'%m-%d-%Y') && git checkout -b archive-${branch_name} # set new branch name to day
+        git add archives/content/ # add only content from this directory
+        git commit -m "updated archive content"
+        hub pull-request -p -l archive -m "Archive topics update" # make a new pull request with the results
+      if: success()
