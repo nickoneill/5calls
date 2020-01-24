@@ -37,4 +37,4 @@ jobs:
         git add archives/content/ # add only content from this directory
         git commit -m "updated archive content"
         hub pull-request -p -l archive -m "Archive topics update" # make a new pull request with the results
-      if: success()
+      if: failure()
