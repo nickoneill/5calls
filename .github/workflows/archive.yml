@@ -28,7 +28,7 @@ jobs:
         git config --local user.name "GitHub Action"
     - name: diff content directory, always succeed so we can test the next step
       run: git diff --quiet archives/content/
-      if: succeeded() || failed()
+      if: success() || failure()
     - name: PR if changes exist
       env:
         GITHUB_USER: ${{ secrets.GITHUB_USER }}
