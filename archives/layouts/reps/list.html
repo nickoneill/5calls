@@ -1,0 +1,17 @@
+{{ define "scripts" }}
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+{{ end }}
+{{ define "main" }}
+<main id="content" role="main" aria-live="polite" class="layout__main archive__list">
+    hey
+    <div id='map' style='width: 400px; height: 300px;'></div>
+    <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoibmljay01Y2FsbHMiLCJhIjoiY2pobTM5Y2gzMTA5MjM2cXdzajlwNzhpNCJ9.rG-Om8tlCTg_fr6DDjIFvg';
+        var map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/streets-v11'
+        });
+    </script>
+</main>
+{{ end }}
