@@ -63,6 +63,7 @@
   list-style: none;
   background-color: $gray-xlight;
   border-bottom: 1px solid $gray-light;
+  min-height: 800px;
 
   &__item {
     display: block;

@@ -19,11 +19,11 @@ export class IssuesList extends React.Component<Props> {
 
   listFooter = () => {
     return (
-      <li>
+      <div>
         <Link to={`/more`} className={`issues__footer-link`}>
           <span>{i18n.t('issues.viewAllActiveIssues')}</span>
         </Link>
-      </li>
+      </div>
     );
   };
 
@@ -55,10 +55,12 @@ export class IssuesList extends React.Component<Props> {
 
   render() {
     return (
-      <ul className="issues-list" role="navigation">
-        {this.listItems()}
+      <div>
+        <ul className="issues-list" role="navigation">
+          {this.listItems()}
+        </ul>
         {this.listFooter()}
-      </ul>
+      </div>
     );
   }
 }

@@ -18,17 +18,25 @@ interface RouteProps {
   readonly issueid: string;
 }
 
+const loadingTimeout = 3000;
+
 interface Props extends RouteComponentProps<RouteProps> {
   remoteState: RemoteDataState;
   callState: CallState;
 }
 
 class CallPageView extends React.Component<Props> {
+  state = {
+    loading: true
+  };
   componentDidMount() {
     const currentIssueId = this.getIssueIdFromLocation(this.props);
     if (currentIssueId) {
       store.dispatch(selectIssueActionCreator(currentIssueId));
     }
+    setTimeout(() => {
+      this.setState({ loading: false });
+    },         loadingTimeout);
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -59,6 +67,12 @@ class CallPageView extends React.Component<Props> {
             callState={this.props.callState}
             getContactsIfNeeded={getContactsIfNeeded}
           />
+        </Layout>
+      );
+    } else if (this.state.loading) {
+      return (
+        <Layout>
+          <div className="call__loading">Loading...</div>
         </Layout>
       );
     } else {
