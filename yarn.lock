@@ -9486,9 +9486,9 @@ react-i18next@^7.0.0:
     html-parse-stringify2 "2.0.1"
     prop-types "^15.6.0"
 
-react-intercom@5calls/react-intercom:
+react-intercom@5calls/react-intercom#2f1aeeb5e98e32fee237ba9c312c0f77fe114d48:
   version "1.0.16"
-  resolved "https://codeload.github.com/5calls/react-intercom/tar.gz/94ecdfe5fe77ba3e06b9b4659a7f37fa6375a6fd"
+  resolved "https://codeload.github.com/5calls/react-intercom/tar.gz/2f1aeeb5e98e32fee237ba9c312c0f77fe114d48"
   dependencies:
     prop-types "15.5.8"
 

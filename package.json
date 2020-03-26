@@ -24,7 +24,7 @@
     "react-ga": "^2.2.0",
     "react-helmet": "^5.2.0",
     "react-i18next": "^7.0.0",
-    "react-intercom": "5calls/react-intercom",
+    "react-intercom": "5calls/react-intercom#2f1aeeb5e98e32fee237ba9c312c0f77fe114d48",
     "react-markdown": "^4.0.0",
     "react-onclickoutside": "^6.7.1",
     "react-phone-number-input": "^1.1.13",
