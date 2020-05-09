@@ -1,5 +1,6 @@
 {
   "applinks": {
+      "apps": [],
       "details": [
            {
              "appIDs": [ "5A8RM3W5R7.org.fivecalls.FiveCalls-ios" ],
@@ -16,8 +17,5 @@
              ]
            }
        ]
-   },
-   "webcredentials": {
-      "apps": [ "5A8RM3W5R7.org.fivecalls.FiveCalls-ios" ]
    }
 }
