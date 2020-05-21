@@ -1,6 +1,6 @@
 import { CallCountAction, IssuesAction, RemoteDataActionType } from './index';
 import { Issue, ContactList } from '../../common/models';
-import { ContactsAction } from './action';
+import { ContactsAction, ToggleDonateAction } from './action';
 
 export const issuesActionCreator = (issues: Issue[]): IssuesAction => {
   return {
@@ -13,6 +13,12 @@ export const callCountActionCreator = (callTotal: number): CallCountAction => {
   return {
     type: RemoteDataActionType.GET_CALL_TOTAL,
     payload: callTotal
+  };
+};
+
+export const toggleDonateActionCreator = (): ToggleDonateAction => {
+  return {
+    type: RemoteDataActionType.TOGGLE_DONATE_EMBED
   };
 };
 

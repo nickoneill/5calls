@@ -27,11 +27,12 @@ import { startup } from './redux/remoteData';
 import './components/bundle.css';
 import bugsnagClient from './services/bugsnag';
 import Intercom, { IntercomAPI } from 'react-intercom';
-import { userStateContext } from './contexts';
+import { userStateContext, remoteStateContext } from './contexts';
 import {
   intercomUserFromUserState,
   intercomID
 } from './components/shared/utils';
+import DonateEmbed from './components/shared/DonateEmbed';
 
 ReactGA.initialize('UA-90915119-1');
 const trackPageView = location => {
@@ -60,6 +61,11 @@ ReactDOM[method](
       <Provider store={store}>
         <AppProvider store={store}>
           <PersistGate persistor={persistor} onBeforeLift={() => startup()}>
+            <remoteStateContext.Consumer>
+              {remoteDataState => (
+                <DonateEmbed show={remoteDataState.showDonateEmbed} />
+              )}
+            </remoteStateContext.Consumer>
             <userStateContext.Consumer>
               {userState => (
                 <Intercom

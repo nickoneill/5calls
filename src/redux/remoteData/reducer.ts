@@ -7,7 +7,8 @@ export const defaultRemoteDataState: RemoteDataState = {
   inactiveIssues: [],
   contacts: new ContactList(),
   callTotal: 0,
-  errorMessage: ''
+  errorMessage: '',
+  showDonateEmbed: false
 };
 
 export interface RemoteDataState {
@@ -16,6 +17,7 @@ export interface RemoteDataState {
   contacts: ContactList;
   callTotal: number;
   errorMessage: string;
+  showDonateEmbed: boolean;
 }
 
 export const remoteDataReducer: Reducer<RemoteDataState> = (
@@ -56,6 +58,8 @@ export const remoteDataReducer: Reducer<RemoteDataState> = (
       });
     case RemoteDataActionType.GET_CALL_TOTAL:
       return Object.assign({}, state, { callTotal: action.payload });
+    case RemoteDataActionType.TOGGLE_DONATE_EMBED:
+      return { ...state, showDonateEmbed: !state.showDonateEmbed };
     default:
       return state;
   }

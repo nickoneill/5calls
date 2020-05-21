@@ -1,15 +1,7 @@
 import * as React from 'react';
 import { RemoteDataState } from '../redux/remoteData';
-import { ContactList } from '../common/models';
-
-const defaultRemoteState = {
-  issues: [],
-  inactiveIssues: [],
-  contacts: new ContactList(),
-  callTotal: 0,
-  errorMessage: ''
-};
+import { defaultRemoteDataState } from '../redux/remoteData/reducer';
 
 export const remoteStateContext = React.createContext<RemoteDataState>(
-  defaultRemoteState
+  defaultRemoteDataState
 );

@@ -1,7 +1,6 @@
 import storage from 'redux-persist/lib/storage';
 import getStoredState from 'redux-persist/lib/integration/getStoredStateMigrateV4';
 
-import { ApplicationState } from './root';
 import { LocationState, locationStateReducer } from './location';
 import { CallState, callStateReducer } from './callState';
 import { RemoteDataState, remoteDataReducer } from './remoteData';
