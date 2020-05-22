@@ -15,7 +15,6 @@ import { postEmail } from '../../services/apiServices';
 import { eventContext } from '../../contexts/EventContext';
 import HeadMeta from '../shared/HeadMeta';
 import { Issue } from '../../common/models';
-import { Mixpanel } from '../../services/mixpanel';
 
 interface Props {
   readonly postcards?: boolean;
@@ -36,12 +35,6 @@ class HeaderImpl extends React.Component<Props, State> {
     this.state = {
       userMenuHidden: true
     };
-  }
-
-  componentDidMount() {
-    if (this.props.currentUser && this.props.currentUser.profile) {
-      Mixpanel.identify(this.props.currentUser.profile.sub);
-    }
   }
 
   handleClickOutside = () => {
