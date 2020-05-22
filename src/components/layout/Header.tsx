@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import onClickOutside from 'react-onclickoutside';
 
@@ -98,7 +99,7 @@ class HeaderImpl extends React.Component<Props, State> {
   };
 
   clickDonate(e: React.MouseEvent<HTMLAnchorElement>) {
-    if (window.actblue) {
+    if (window.actblue && window.actblue.__initialized) {
       // double check that actblue has loaded, if it has, prevent that click
       e.preventDefault();
       window.actblue
@@ -106,10 +107,8 @@ class HeaderImpl extends React.Component<Props, State> {
           token: '5iuTAwr4Tnr8EvmUeAN5AsoQ'
         })
         .then(contribution => {
-          // console.log('promise contribution', contribution);
-        })
-        .catch(error => {
-          // console.log('error contributing: ', error);
+          const ga = ReactGA.ga();
+          ga('send', 'ecommerce', 'purchase', { value: contribution.amount });
         });
     }
   }
