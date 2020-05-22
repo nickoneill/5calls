@@ -23,8 +23,7 @@ export const HELP_SET_LOCATION =
 export const HELP_OTHER_REPRESENTATIVES =
   'https://intercom.help/5calls/using-the-5-calls-website-and-apps/why-do-i-only-see-some-of-my-representatives';
 
-export const SHARE_BUCKET_URL =
-  'https://shareimages.5calls.org/';
+export const SHARE_BUCKET_URL = 'https://shareimages.5calls.org/';
 
 const callbackURI = () => {
   if (window.location.host.includes('localhost')) {

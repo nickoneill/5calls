@@ -15,6 +15,14 @@ import { postEmail } from '../../services/apiServices';
 import { eventContext } from '../../contexts/EventContext';
 import HeadMeta from '../shared/HeadMeta';
 import { Issue } from '../../common/models';
+import { ActBlue } from '../../common/models/external';
+
+declare global {
+  // actblue injects this object when it loads
+  interface Window {
+    actblue?: ActBlue;
+  }
+}
 
 interface Props {
   readonly postcards?: boolean;
@@ -89,6 +97,16 @@ class HeaderImpl extends React.Component<Props, State> {
       });
   };
 
+  clickDonate(e: React.MouseEvent<HTMLAnchorElement>) {
+    if (window.actblue) {
+      // double check that actblue has loaded, if it has, prevent that click
+      e.preventDefault();
+      window.actblue.requestContribution({
+        token: '5iuTAwr4Tnr8EvmUeAN5AsoQ'
+      });
+    }
+  }
+
   render() {
     let profile: UserProfile | undefined;
     if (this.props.currentUser !== undefined) {
@@ -108,12 +126,8 @@ class HeaderImpl extends React.Component<Props, State> {
               />
             </Link>
             <div className="header__right">
-              {/* keep this around for teams / campaigns, but don't show for now */}
-              {/* <ul>
-              <li><Link className={props.postcards ? '' : 'active'} to="/">Calls</Link></li>
-              <li><Link className={props.postcards ? 'active' : ''} to="/postcards">Postcards</Link></li>
-            </ul> */}
               <a
+                onClick={e => this.clickDonate(e)}
                 href="https://secure.actblue.com/donate/5calls-donate?amount=25"
                 className="btn btn-primary donate-btn"
               >
