@@ -1,19 +1,11 @@
 import * as React from 'react';
-import lifecycle from 'react-pure-lifecycle';
 
 import * as Constants from '../../common/constants';
 import { Link } from 'react-router-dom';
-import { Mixpanel } from '../../services/mixpanel';
 
 interface Props {
   totalCount: number;
 }
-
-const methods = {
-  componentDidMount(props: Props) {
-    Mixpanel.track('Home');
-  }
-};
 
 const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
   <div className="hypothesis">
@@ -61,4 +53,4 @@ const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
   </div>
 );
 
-export default lifecycle(methods)(Why5calls);
+export default Why5calls;

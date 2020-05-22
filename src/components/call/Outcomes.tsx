@@ -1,4 +1,5 @@
 import * as React from 'react';
+import * as ReactGA from 'react-ga';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
 import EventEmitter = require('wolfy87-eventemitter');
@@ -7,7 +8,6 @@ import { submitOutcome } from '../../redux/callState';
 import { store } from '../../redux/store';
 import { Issue } from '../../common/models';
 import { UserState } from '../../redux/userState';
-import { Mixpanel } from '../../services/mixpanel';
 
 interface Props {
   readonly currentIssue: Issue;
@@ -25,10 +25,8 @@ class Outcomes extends React.Component<
   dispatchOutcome(e: React.MouseEvent<HTMLButtonElement>, outcome: string) {
     e.currentTarget.blur();
 
-    Mixpanel.people.increment({
-      call: 1,
-      outcome: 1
-    });
+    const ga = ReactGA.ga();
+    ga('send', 'event', 'call', 'outcome', outcome);
 
     // tslint:disable-next-line:no-any
     store.dispatch<any>(

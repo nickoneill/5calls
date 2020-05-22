@@ -10,8 +10,8 @@ import {
   userStatsContext
 } from '../../contexts';
 import { eventContext } from '../../contexts/EventContext';
-import { Mixpanel } from '../../services/mixpanel';
 import { ContactProgress } from './ContactProgress';
+import eventUtils from '../shared/eventUtils';
 
 // This defines the props that we must pass into this component.
 export interface Props {
@@ -36,7 +36,7 @@ export default class Call extends React.Component<Props, State> {
 
   componentDidMount() {
     this.props.getContactsIfNeeded(false);
-    Mixpanel.track('Topic', { IssueID: this.props.issue.id });
+    eventUtils.trackEvent('Topic', { IssueID: this.props.issue.id });
   }
 
   setStateFromProps(props: Props): State {
