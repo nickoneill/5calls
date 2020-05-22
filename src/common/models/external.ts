@@ -3,10 +3,10 @@ export interface ActBlue {
 }
 
 export interface ActBlueConfig {
-  token: string;
+  token: string; // the config token for this embed, the only required attribute
   amount?: string; // a pre-selected amount
   donorData?: ActBlueDonor; // pre-entered information about the donor
-  //   express?: any; // maybe a bool indicating if express should be used?
+  express?: boolean; // maybe a bool indicating if express should be used?
   refcodes?: string; // comma-sep ref codes
 }
 
