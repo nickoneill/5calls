@@ -1,5 +1,4 @@
-// eslint-disable-next-line
-function trackEvent(event: string, properties: any) {
+function trackEvent(event: string, properties: {}) {
   // nothing for now, we removed mixpanel
 }
 
