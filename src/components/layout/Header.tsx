@@ -101,9 +101,16 @@ class HeaderImpl extends React.Component<Props, State> {
     if (window.actblue) {
       // double check that actblue has loaded, if it has, prevent that click
       e.preventDefault();
-      window.actblue.requestContribution({
-        token: '5iuTAwr4Tnr8EvmUeAN5AsoQ'
-      });
+      window.actblue
+        .requestContribution({
+          token: '5iuTAwr4Tnr8EvmUeAN5AsoQ'
+        })
+        .then(contribution => {
+          // console.log('promise contribution', contribution);
+        })
+        .catch(error => {
+          // console.log('error contributing: ', error);
+        });
     }
   }
 

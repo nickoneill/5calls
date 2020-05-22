@@ -1,6 +1,11 @@
 export interface ActBlue {
-  requestContribution(config: ActBlueConfig): void;
+  requestContribution(config: ActBlueConfig): Promise<ActBlueContribution>;
+  addEventListener(eventName: string, completion: ActBlueCompletionCallback);
 }
+
+export type ActBlueCompletionCallback = (
+  contribution: ActBlueContribution
+) => void;
 
 export interface ActBlueConfig {
   token: string; // the config token for this embed, the only required attribute
@@ -15,4 +20,13 @@ export interface ActBlueDonor {
   lastname?: string;
   email?: string;
   zip?: string;
+}
+
+export interface ActBlueContribution {
+  amount: number;
+  embedId: string;
+  email?: string;
+  name: string;
+  order_number: string;
+  refcode?: string;
 }
