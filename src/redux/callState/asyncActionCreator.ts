@@ -4,7 +4,6 @@ import { completeIssueActionCreator, moveToNextActionCreator } from './index';
 import { addCallEventActionCreator, UserContactEventType } from '../userStats';
 import * as apiServices from '../../services/apiServices';
 import { formatLocationForBackEnd } from '../../components/shared/utils';
-import * as ReactGA from 'react-ga';
 import { UserOutcomeResult } from '../userStats/reducer';
 
 export interface OutcomeData {
@@ -36,13 +35,6 @@ export function submitOutcome(data: OutcomeData) {
 
     if (state.userState.profile !== undefined) {
       data.userId = state.userState.profile.sub;
-    }
-
-    const ga = ReactGA.ga();
-    if (data.outcome === 'unavailable') {
-      ga('send', 'event', 'call_result', 'unavailable', 'unavailable');
-    } else {
-      ga('send', 'event', 'call_result', 'success', data.outcome);
     }
 
     // Don't post or add to user stats a "skipped" outcome

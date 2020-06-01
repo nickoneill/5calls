@@ -11,7 +11,7 @@ import {
   setProfileActionCreator,
   setAuthTokenActionCreator
 } from '../../redux/userState/action';
-import { Auth0Config } from '../../common/constants';
+import { Auth0Config, DONATE_URL } from '../../common/constants';
 import { postEmail } from '../../services/apiServices';
 import { eventContext } from '../../contexts/EventContext';
 import HeadMeta from '../shared/HeadMeta';
@@ -107,8 +107,11 @@ class HeaderImpl extends React.Component<Props, State> {
           token: '5iuTAwr4Tnr8EvmUeAN5AsoQ'
         })
         .then(contribution => {
-          const ga = ReactGA.ga();
-          ga('send', 'ecommerce', 'purchase', { value: contribution.amount });
+          ReactGA.event({
+            category: 'donate',
+            action: 'donated from embed',
+            value: contribution.amount
+          });
         });
     }
   }
@@ -134,7 +137,7 @@ class HeaderImpl extends React.Component<Props, State> {
             <div className="header__right">
               <a
                 onClick={e => this.clickDonate(e)}
-                href="https://secure.actblue.com/donate/5calls-donate?amount=25"
+                href={DONATE_URL + '?refcode=embedfallback&amount=25'}
                 className="btn btn-primary donate-btn"
               >
                 Donate
