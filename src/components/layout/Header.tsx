@@ -11,7 +11,11 @@ import {
   setProfileActionCreator,
   setAuthTokenActionCreator
 } from '../../redux/userState/action';
-import { Auth0Config, DONATE_URL } from '../../common/constants';
+import {
+  Auth0Config,
+  DONATE_URL,
+  ACTBLUE_EMBED_TOKEN
+} from '../../common/constants';
 import { postEmail } from '../../services/apiServices';
 import { eventContext } from '../../contexts/EventContext';
 import HeadMeta from '../shared/HeadMeta';
@@ -104,13 +108,13 @@ class HeaderImpl extends React.Component<Props, State> {
       e.preventDefault();
       window.actblue
         .requestContribution({
-          token: '5iuTAwr4Tnr8EvmUeAN5AsoQ'
+          token: ACTBLUE_EMBED_TOKEN
         })
         .then(contribution => {
           ReactGA.event({
             category: 'donate',
             action: 'donated from embed',
-            value: contribution.amount
+            value: Math.floor(contribution.amount / 10) // convert to whole dollars
           });
         });
     }
