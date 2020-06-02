@@ -25,8 +25,11 @@ class Outcomes extends React.Component<
   dispatchOutcome(e: React.MouseEvent<HTMLButtonElement>, outcome: string) {
     e.currentTarget.blur();
 
-    const ga = ReactGA.ga();
-    ga('send', 'event', 'call', 'outcome', outcome);
+    ReactGA.event({
+      category: 'call',
+      action: 'clicked call outcome',
+      label: outcome
+    });
 
     // tslint:disable-next-line:no-any
     store.dispatch<any>(

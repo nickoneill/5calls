@@ -1,7 +1,9 @@
 import * as React from 'react';
-import i18n from '../../services/i18n';
 import { Link } from 'react-router-dom';
 import { translate } from 'react-i18next';
+
+import i18n from '../../services/i18n';
+import { DONATE_URL } from '../../common/constants';
 
 const Navigation: React.StatelessComponent = () => {
   return (
@@ -51,7 +53,7 @@ const Navigation: React.StatelessComponent = () => {
             </a>
           </li>
           <li>
-            <a href="https://secure.actblue.com/contribute/page/5calls?refcode=web">
+            <a href={DONATE_URL + '?refcode=footer'}>
               <i aria-hidden="true" className="fas fa-comment-dollar" />
               <span>Be a Supporter</span>
             </a>

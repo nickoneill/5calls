@@ -69,7 +69,9 @@ test('Footer displays right links', async t => {
   const supportLink = support.find('a');
   await t
     .expect(supportLink.getAttribute('href'))
-    .eql('https://secure.actblue.com/contribute/page/5calls?refcode=web');
+    .eql(
+      'https://secure.actblue.com/contribute/page/5calls-donate?refcode=web'
+    );
   await t.expect(supportLink.innerText).eql('Be a Supporter');
   const supportLabel = await supportLink.find('.fa fa-money');
   await t.expect(supportLabel).ok();

@@ -7,7 +7,7 @@ import 'react-phone-number-input/rrui.css';
 import 'react-phone-number-input/style.css';
 
 import i18n from '../../services/i18n';
-import * as Constants from '../../common/constants';
+import { DONATE_URL, APP_URL, SHARE_BUCKET_URL } from '../../common/constants';
 import { translate } from 'react-i18next';
 import { Issue } from '../../common/models';
 import { CallCount } from '../shared';
@@ -25,7 +25,7 @@ interface State {
 }
 
 export class Done extends React.Component<Props, State> {
-  url = encodeURIComponent(Constants.APP_URL);
+  url = encodeURIComponent(APP_URL);
   additionalTwitterComps = '&via=make5calls';
   tweet = encodeURIComponent(i18n.t('promote.motto'));
   twitterTitle = i18n.t('promote.shareOnTwitter');
@@ -45,8 +45,11 @@ export class Done extends React.Component<Props, State> {
   twitterShare = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    const ga = ReactGA.ga();
-    ga('send', 'event', 'share', 'twitter', 'twitter');
+    ReactGA.event({
+      category: 'share',
+      action: 'shared from done',
+      label: 'twitter'
+    });
 
     window.open(
       `https://twitter.com/share?url=${this.url}${
@@ -60,8 +63,11 @@ export class Done extends React.Component<Props, State> {
   facebookShare = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
 
-    const ga = ReactGA.ga();
-    ga('send', 'event', 'share', 'facebook', 'facebook');
+    ReactGA.event({
+      category: 'share',
+      action: 'shared from done',
+      label: 'facebook'
+    });
 
     window.open(
       'https://www.facebook.com/sharer/sharer.php?u=http://bit.ly/2iJb5nH',
@@ -83,10 +89,7 @@ export class Done extends React.Component<Props, State> {
   }
 
   donateClick(amount: number) {
-    const ga = ReactGA.ga();
-    ga('send', 'event', 'donate', amount, amount);
-
-    window.open(Constants.DONATE_URL + '?amount=' + amount, '_blank');
+    window.open(DONATE_URL + '?refcode=done&amount=' + amount, '_blank');
   }
 
   render() {
@@ -96,7 +99,7 @@ export class Done extends React.Component<Props, State> {
         ? this.props.currentIssue.slug
         : this.props.currentIssue.id;
 
-      this.url = encodeURIComponent(`${Constants.APP_URL}/issue/${issueID}`);
+      this.url = encodeURIComponent(`${APP_URL}/issue/${issueID}`);
       // the additional "via @make5calls" text that the via param introduces doesn't fit with issue titles, remove it
       this.additionalTwitterComps = '';
       this.tweet = encodeURIComponent(
@@ -108,9 +111,7 @@ export class Done extends React.Component<Props, State> {
       this.facebookTitle = i18n.t('promote.shareThisIssue');
     }
 
-    const shareURL = `${Constants.SHARE_BUCKET_URL}${
-      this.props.currentIssue.id
-    }.png`;
+    const shareURL = `${SHARE_BUCKET_URL}${this.props.currentIssue.id}.png`;
 
     return (
       <section className="call">
