@@ -1,4 +1,5 @@
 import { Outcome, Contact, ContactList } from './';
+import { UserContactEvent } from '../../redux/userStats/reducer';
 
 export class Issue {
   public id: number;
@@ -26,6 +27,15 @@ export class Issue {
 
   public numberOfContacts(contactList: ContactList): number {
     return this.filteredContacts(contactList).length;
+  }
+
+  public numberOfCompletedContacts(
+    contactList: ContactList,
+    userEvents: UserContactEvent[]
+  ): number {
+    return this.filteredContacts(contactList).filter(contact =>
+      this.isContactComplete(contact, userEvents)
+    ).length;
   }
 
   public currentContact(
@@ -66,6 +76,18 @@ export class Issue {
     }
 
     return contacts;
+  }
+
+  public isContactComplete(
+    contact: Contact,
+    userEvents: UserContactEvent[]
+  ): boolean {
+    return (
+      userEvents.findIndex(
+        event =>
+          event.issueid === this.id.toString() && event.contactid === contact.id
+      ) > -1
+    );
   }
 
   public listItemLabel(): string {

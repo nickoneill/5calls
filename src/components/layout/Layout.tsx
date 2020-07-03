@@ -62,6 +62,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                         callState.currentIssueId
                       )}
                       completedIssueIds={callState.completedIssueIds}
+                      contacts={remoteState.contacts}
                     />
                   </div>
                 </aside>

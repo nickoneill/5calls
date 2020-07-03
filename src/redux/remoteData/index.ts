@@ -9,5 +9,6 @@ export { RemoteDataState, remoteDataReducer } from './reducer';
 export {
   startup,
   getIssuesIfNeeded,
+  getContactsIfNeeded,
   fetchCallCount
 } from './asyncActionCreator';

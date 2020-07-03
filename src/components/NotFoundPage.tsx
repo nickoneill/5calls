@@ -25,6 +25,7 @@ const NotFoundPage: React.StatelessComponent = () => {
                       issues={remoteState.issues}
                       currentIssue={undefined}
                       completedIssueIds={callState.completedIssueIds}
+                      contacts={remoteState.contacts}
                     />
                   )}
                 </callStateContext.Consumer>

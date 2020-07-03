@@ -7,15 +7,19 @@ interface Props {
   readonly issue: Issue;
   readonly isIssueComplete: boolean;
   readonly isIssueActive: boolean;
+  readonly contactsCount: number;
+  readonly completeCount: number;
 }
 
 interface State {}
 
 export class IssuesListItem extends React.Component<Props, State> {
   render() {
-    const isCompleted = this.props.isIssueComplete ? 'is-complete' : '';
-    const isActive = this.props.isIssueActive ? 'is-active' : '';
-    const issueLink = `/issue/${this.props.issue.slugOrID()}`;
+    const { completeCount, contactsCount, isIssueActive, issue } = this.props;
+    const isCompleted =
+      completeCount > 0 && completeCount === contactsCount ? 'is-complete' : '';
+    const isActive = isIssueActive ? 'is-active' : '';
+    const issueLink = `/issue/${issue.slugOrID()}`;
 
     return (
       <li>
@@ -23,20 +27,22 @@ export class IssuesListItem extends React.Component<Props, State> {
           aria-controls="content"
           className={`issues-list__item ${isCompleted} ${isActive}`}
           to={issueLink}
-          onClick={() =>
-            selectIssueActionCreator(this.props.issue.id.toString())
-          }
+          onClick={() => selectIssueActionCreator(issue.id.toString())}
         >
           <span
             aria-live="polite"
             className={`issues-list__item__status ${isCompleted} ${isActive}`}
           >
-            <span className="visually-hidden" />
+            {isCompleted ? (
+              <span className="visually-hidden" />
+            ) : (
+              getProgressCircle(completeCount, contactsCount)
+            )}
           </span>
           <span
             className={`issues-list__item__title ${isCompleted} ${isActive}`}
           >
-            {this.props.issue.name}
+            {issue.name}
           </span>
           <span
             className={`issues-list__item__summary ${isCompleted} ${isActive}`}
@@ -48,6 +54,36 @@ export class IssuesListItem extends React.Component<Props, State> {
       </li>
     );
   }
+}
+
+function getProgressCircle(completeCount: number, contactsCount: number) {
+  const R = 18;
+  const C = 2 * 3.14 * R;
+  const dashLength =
+    contactsCount === 0 ? 0 : (C * completeCount) / contactsCount;
+
+  // leaving as much of the styling as possible in the .SCSS file but stroke dashes need to be inlined for % math
+  const circleStyleProgress = {
+    strokeDasharray: `${dashLength} ${C - dashLength}`,
+    strokeDashoffset: `${C / 4}` // offetting by 1/4 circle makes the progress start at the top
+  };
+
+  return (
+    <svg
+      viewBox={`0 0 ${R * 2} ${R * 2}`}
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ overflow: 'visible' }}
+    >
+      <circle cx={`${R}`} cy={`${R}`} r={`${R}`} />
+      <circle
+        cx={`${R}`}
+        cy={`${R}`}
+        r={`${R}`}
+        style={circleStyleProgress}
+        className="progress"
+      />
+    </svg>
+  );
 }
 
 export default IssuesListItem;

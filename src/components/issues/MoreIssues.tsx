@@ -3,6 +3,7 @@ import * as React from 'react';
 import { Issue, Category, CategoryMap } from '../../common/models';
 import { IssuesListItem } from './index';
 import { RemoteDataState } from '../../redux/remoteData';
+import { userStatsContext } from '../../contexts';
 
 interface Props {
   readonly remoteState: RemoteDataState;
@@ -100,31 +101,48 @@ export class MoreIssues extends React.Component<Props, State> {
   }
 
   render() {
+    const contacts = this.props.remoteState.contacts;
     return (
       <section className="call">
         <div className="call_complete">
           <h1 className="call__title">
             {this.state.totalCount + ' Active Issues'}
           </h1>
-          {this.state.issueCategoryMap ? (
-            this.state.issueCategoryMap.map((cat, key) => (
-              <div key={key}>
-                <h2>{cat.category.name}</h2>
-                <ul className="issues-list" role="navigation">
-                  {cat.issues.map(issue => (
-                    <IssuesListItem
-                      key={issue.id}
-                      issue={issue}
-                      isIssueComplete={this.isIssueComplete(issue)}
-                      isIssueActive={false}
-                    />
-                  ))}
-                </ul>
-              </div>
-            ))
-          ) : (
-            <span />
-          )}
+          <userStatsContext.Consumer>
+            {userStatsState => (
+              <>
+                {this.state.issueCategoryMap ? (
+                  this.state.issueCategoryMap.map((cat, key) => (
+                    <div key={key}>
+                      <h2>{cat.category.name}</h2>
+                      <ul className="issues-list" role="navigation">
+                        {cat.issues.map(issue => (
+                          <IssuesListItem
+                            key={issue.id}
+                            issue={issue}
+                            isIssueActive={false}
+                            isIssueComplete={
+                              issue.numberOfCompletedContacts(
+                                contacts,
+                                userStatsState.all
+                              ) > 0
+                            }
+                            contactsCount={issue.numberOfContacts(contacts)}
+                            completeCount={issue.numberOfCompletedContacts(
+                              contacts,
+                              userStatsState.all
+                            )}
+                          />
+                        ))}
+                      </ul>
+                    </div>
+                  ))
+                ) : (
+                  <span />
+                )}
+              </>
+            )}
+          </userStatsContext.Consumer>
         </div>
       </section>
     );

@@ -84,7 +84,6 @@
       transform: translateY(-50%);
       left: 12px;
       border-radius: 50%;
-      border: 3px solid $gray-lesslight;
       width: 36px;
       height: 36px;
       font-size: 21px;
@@ -94,6 +93,16 @@
       margin: 0;
       padding: 0;
       color: $white;
+
+      & circle {
+        fill: transparent;
+        stroke-width: 4;
+        stroke: $gray-lesslight;
+
+        &.progress {
+          stroke: $green;
+        }
+      }
 
       &.is-complete {
         color: transparent;
