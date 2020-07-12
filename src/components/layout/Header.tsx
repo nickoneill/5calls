@@ -3,9 +3,9 @@ import * as ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import onClickOutside from 'react-onclickoutside';
 
-import { CustomLogin, LoginService } from '@5calls/react-components';
+import { LoginService } from '@5calls/react-components';
 import { store } from '../../redux/store';
-import { UserState, UserProfile } from '../../redux/userState/reducer';
+import { UserState } from '../../redux/userState/reducer';
 import {
   clearProfileActionCreator,
   setProfileActionCreator,
@@ -17,7 +17,6 @@ import {
   ACTBLUE_EMBED_TOKEN
 } from '../../common/constants';
 import { postEmail } from '../../services/apiServices';
-import { eventContext } from '../../contexts/EventContext';
 import HeadMeta from '../shared/HeadMeta';
 import { Issue } from '../../common/models';
 import { ActBlue } from '../../common/models/external';
@@ -121,15 +120,34 @@ class HeaderImpl extends React.Component<Props, State> {
   }
 
   render() {
-    let profile: UserProfile | undefined;
-    if (this.props.currentUser !== undefined) {
-      profile = this.props.currentUser.profile;
-    }
-
     return (
       <>
         <HeadMeta issue={this.props.currentIssue} />
-        <header className="logo__header" role="banner">
+        <header className="header">
+          <div className="content">
+            <Link to="/">
+              <img
+                src="/img/5calls-logo-small.png"
+                alt="5 Calls"
+                className="logo"
+              />
+            </Link>
+            <div className="header-actions">
+              <a
+                href="https://secure.actblue.com/donate/5calls-donate?refcode=embedfallback&amp;amount=25"
+                className="button button-red button-small icon-l"
+              >
+                <i className="fa fa-fw fa-money-bill-wave" /> Donate
+              </a>
+              <a
+                onClick={e => this.clickDonate(e)}
+                href={DONATE_URL + '?refcode=embedfallback&amount=25'}
+                className="header-actions-user"
+              />
+            </div>
+          </div>
+        </header>
+        {/* <header className="logo__header" role="banner">
           <div className="layout">
             <Link to="/">
               <img
@@ -159,7 +177,7 @@ class HeaderImpl extends React.Component<Props, State> {
               </eventContext.Consumer>
             </div>
           </div>
-        </header>
+        </header> */}
       </>
     );
   }

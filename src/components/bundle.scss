@@ -1,1 +1,20 @@
-@import 'shared/scss/_style.scss';
+@import 'shared/scss/reset';
+
+@import 'shared/scss/global';
+@import 'shared/scss/typography';
+@import 'shared/scss/grid';
+@import 'shared/scss/forms';
+
+// Components
+@import 'shared/scss/components/button';
+@import 'shared/scss/components/card';
+@import 'shared/scss/components/footer';
+@import 'shared/scss/components/header';
+@import 'shared/scss/components/info-box';
+@import 'shared/scss/components/issue-sidebar';
+@import 'shared/scss/components/news-clip';
+@import 'shared/scss/components/step';
+@import 'shared/scss/components/volunteer';
+
+// Page-specific overrides
+@import 'shared/scss/overrides';
