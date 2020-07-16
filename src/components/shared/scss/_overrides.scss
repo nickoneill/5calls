@@ -2,7 +2,6 @@
 // Page-specific overrides
 // =========
 
-
 // Homepage
 
 .home {
@@ -35,21 +34,21 @@
 }
 
 .subscribe-body {
-  input[type="text"] {
+  input[type='text'] {
     margin-bottom: 1rem;
   }
 
-  input[type="submit"] {
+  input[type='submit'] {
     width: 100%;
   }
 
   @media screen and (min-width: 76rem) {
     display: flex;
-    input[type="text"] {
+    input[type='text'] {
       margin: 0 0.5rem 0 0;
     }
 
-    input[type="submit"] {
+    input[type='submit'] {
       width: auto;
     }
   }
@@ -98,8 +97,6 @@
     }
   }
 }
-
-
 
 .full-list-link {
   text-align: center;
@@ -175,7 +172,7 @@
     margin: 0 auto 6rem;
 
     + div .info-box {
-      margin-top: - 3rem;
+      margin-top: -3rem;
     }
 
     div {

@@ -19,7 +19,7 @@ input::-ms-clear {
   display: none;
 }
 
-input[type="submit"] {
+input[type='submit'] {
   cursor: pointer;
   -webkit-appearance: button;
 }
@@ -40,17 +40,18 @@ input {
   color: var(--c-base);
 }
 
-label, legend {
+label,
+legend {
   color: var(--c-base);
 }
 
-input[type="text"],
-input[type="email"] {
+input[type='text'],
+input[type='email'] {
   height: var(--leading);
   border: 2px solid var(--c-blue);
 }
 
-input[type="submit"] {
+input[type='submit'] {
   display: inline-block;
   width: auto;
   border: 0;

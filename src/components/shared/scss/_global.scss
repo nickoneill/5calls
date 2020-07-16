@@ -42,7 +42,10 @@
 
 //  Basic layout
 
-html, input, select, button {
+html,
+input,
+select,
+button {
   font-family: 'Roboto', sans-serif;
   color: var(--c-base);
 }
@@ -97,8 +100,14 @@ body {
     margin-top: 1rem;
   }
 
-  h2, .card, .card i,
-  a, a:hover, a:focus, a:active, a:visited {
+  h2,
+  .card,
+  .card i,
+  a,
+  a:hover,
+  a:focus,
+  a:active,
+  a:visited {
     color: #fff;
   }
 }

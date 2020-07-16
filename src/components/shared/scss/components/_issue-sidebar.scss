@@ -100,7 +100,8 @@
       margin: 0;
     }
 
-    input, button {
+    input,
+    button {
       position: relative;
       &:focus {
         box-shadow: 0 0 0 4px rgb(170, 191, 221);
@@ -166,7 +167,6 @@
     transform: scale(1.05);
   }
 
-
   i {
     color: #fff;
     font-size: 0.75rem;
@@ -211,8 +211,6 @@
   z-index: 2;
 }
 
-
-
 .i-bar-header {
   font-size: 1rem;
   padding: 0.5rem var(--i-bar-padding-h);
@@ -235,7 +233,6 @@
   font-size: 1rem;
 }
 
-
 @mixin i-bar-color($status) {
   .i-bar-header-#{$status} {
     background: rgba(var(--c-#{$status}-rgb), 0.05);
@@ -247,7 +244,8 @@
   .i-bar-item.is-#{$status} {
     --check-color: rgba(var(--c-#{$status}-rgb), 0.8);
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
       background: rgba(var(--c-#{$status}-rgb), 0.05);
     }
 
@@ -269,7 +267,7 @@
   }
 }
 
-@include i-bar-color("latest");
-@include i-bar-color("urgent");
-@include i-bar-color("momentum");
-@include i-bar-color("unsorted");
+@include i-bar-color('latest');
+@include i-bar-color('urgent');
+@include i-bar-color('momentum');
+@include i-bar-color('unsorted');
