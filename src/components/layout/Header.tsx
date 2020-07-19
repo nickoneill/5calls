@@ -3,7 +3,6 @@ import * as ReactGA from 'react-ga';
 import { Link } from 'react-router-dom';
 import onClickOutside from 'react-onclickoutside';
 
-import { LoginService } from '@5calls/react-components';
 import { store } from '../../redux/store';
 import { UserState } from '../../redux/userState/reducer';
 import {
@@ -20,6 +19,7 @@ import { postEmail } from '../../services/apiServices';
 import HeadMeta from '../shared/HeadMeta';
 import { Issue } from '../../common/models';
 import { ActBlue } from '../../common/models/external';
+import { LoginService } from '../login/LoginService';
 
 declare global {
   // actblue injects this object when it loads

@@ -14,20 +14,21 @@ import { setCachedCity } from '../location/index';
 import { issuesActionCreator, callCountActionCreator } from './index';
 import { clearContactIndexes } from '../callState/';
 import { ApplicationState } from '../root';
-import { LoginService, UserProfile } from '@5calls/react-components';
 import { Auth0Config } from '../../common/constants';
 import { UserContactEvent } from '../userStats';
 import { setUploadedActionCreator } from '../userStats/actionCreator';
 import {
   clearProfileActionCreator,
   setAuthTokenActionCreator,
-  setProfileActionCreator
+  setProfileActionCreator,
+  UserProfile
 } from '../userState';
 import { setInvalidAddress, setLocation } from '../location/actionCreator';
 import { store } from '../store';
 import { contactsActionCreator } from './actionCreator';
 import { removeURLParameter } from '../../components/shared/utils';
 import bugsnagClient from '../../services/bugsnag';
+import { LoginService } from '../../components/login/LoginService';
 
 export const getIssuesIfNeeded = () => {
   const state = store.getState();

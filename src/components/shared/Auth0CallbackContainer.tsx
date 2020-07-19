@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Auth0Callback, AuthResponse } from '@5calls/react-components';
 import { store } from '../../redux/store';
 import {
   setAuthTokenActionCreator,
@@ -7,6 +6,8 @@ import {
 } from '../../redux/userState';
 import { uploadStatsIfNeeded } from '../../redux/remoteData/asyncActionCreator';
 import { Auth0Config } from '../../common/constants';
+import { AuthResponse } from './authModels';
+import { Auth0Callback } from '../login/Auth0Callback';
 
 interface Props {}
 

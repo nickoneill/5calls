@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import { UserProfile, Auth0Config } from '../shared/model';
-import { CustomLoginUi } from './CustomLoginUi';
+import { UserProfile, Auth0Config } from '../shared/authModels';
+import { CustomLoginUI } from './CustomLoginUI';
 import { LoginService } from './LoginService';
 
 export interface CustomLoginProps {
@@ -60,7 +60,7 @@ export class CustomLogin extends React.Component<
 
   render() {
     return (
-      <CustomLoginUi
+      <CustomLoginUI
         profile={this.props.userProfile}
         auth0Config={this.props.auth0Config}
         showEmailModal={this.showEmail()}

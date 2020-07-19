@@ -3,7 +3,7 @@ import { Issue } from './../../common/models';
 import { RemoteDataState } from '../../redux/remoteData';
 
 import { store } from '../../redux/store';
-import { UserState } from '@5calls/react-components/lib/shared/model';
+import { UserState } from '../../redux/userState';
 
 /**
  * Formats the location for the back end as

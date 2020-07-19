@@ -5,7 +5,7 @@ import * as EmailValidator from 'email-validator';
 import EventEmitter = require('wolfy87-eventemitter');
 import { UserProfile, Auth0Config } from '../shared/authModels';
 
-export interface CustomLoginUiProps {
+export interface CustomLoginUIProps {
   readonly profile?: UserProfile;
   readonly auth0Config: Auth0Config;
   readonly showEmailModal: boolean;
@@ -18,7 +18,7 @@ export interface CustomLoginUiProps {
   signup: (email?: string, password?: string) => Promise<string>;
 }
 
-export interface CustomLoginUiState {
+export interface CustomLoginUIState {
   email: string;
   password: string;
   errorMessage: string;
@@ -29,11 +29,11 @@ export interface CustomLoginUiState {
   emailOptIn: boolean;
 }
 
-export class CustomLoginUi extends React.Component<
-  CustomLoginUiProps,
-  CustomLoginUiState
+export class CustomLoginUI extends React.Component<
+  CustomLoginUIProps,
+  CustomLoginUIState
 > {
-  constructor(props: CustomLoginUiProps) {
+  constructor(props: CustomLoginUIProps) {
     super(props);
 
     this.state = {
