@@ -31,7 +31,7 @@ export class Auth0Callback extends React.Component<
       this.props.handleAuthentication(response).then(response => {
         window.setTimeout(() => {
           this.setState({ doneRedirect: true });
-        }, 500);
+        },                500);
       });
     });
   }

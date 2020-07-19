@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { RouteComponentProps } from 'react-router-dom';
+
 import { Layout } from '../layout';
 import { remoteStateContext } from '../../contexts/RemoteStateContext';
 
@@ -16,7 +17,10 @@ interface Props extends RouteComponentProps<{ id: string }> {}
 export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
   <remoteStateContext.Consumer>
     {state => (
-      <Layout extraComponent={HomeExtras}>
+      <Layout
+        extraHeader={<h1>Make your voice&nbsp;heard.</h1>}
+        extraBody={<HomeExtraBody />}
+      >
         <div className="card-home-wrapper">
           <div className="card card-home">
             <i className="fa fa-fw fa-phone-alt" />
@@ -93,16 +97,13 @@ export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
   </remoteStateContext.Consumer>
 );
 
-const HomeExtras: React.StatelessComponent<Props> = (props: Props) => (
-  <>
-    <h1>Make your voice&nbsp;heard.</h1>
-    <div className="measure a-ctr">
-      <p>
-        5 Calls is the easiest and most effective way for U.S. constituents to
-        make a political impact.
-      </p>
-    </div>
-  </>
+const HomeExtraBody: React.StatelessComponent = () => (
+  <div className="measure a-ctr">
+    <p>
+      5 Calls is the easiest and most effective way for U.S. constituents to
+      make a political impact.
+    </p>
+  </div>
 );
 
 export default HomePage;

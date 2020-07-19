@@ -6,7 +6,7 @@ import { Layout } from '../layout';
 interface Props extends RouteComponentProps<{ id: string }> {}
 
 const PostcardsPage: React.StatelessComponent<Props> = (props: Props) => (
-  <Layout postcards={true}>
+  <Layout>
     <Postcards />
   </Layout>
 );

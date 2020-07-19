@@ -11,8 +11,8 @@ import {
 
 interface Props {
   readonly children?: {};
-  readonly extraComponent?: {};
-  readonly postcards?: boolean;
+  readonly extraHeader?: React.ReactNode;
+  readonly extraBody?: React.ReactNode;
 }
 
 function currentIssue(
@@ -42,7 +42,6 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
               <userStateContext.Consumer>
                 {userState => (
                   <Header
-                    postcards={props.postcards}
                     currentUser={userState}
                     currentIssue={currentIssue(
                       remoteState.issues,
@@ -52,8 +51,9 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                 )}
               </userStateContext.Consumer>
               <div className="content">
-                {props.extraComponent}
+                {props.extraHeader}
                 <div className="g">
+                  {props.extraBody}
                   <div className="i-bar">
                     <SidebarHeader />
                     <Sidebar
@@ -66,6 +66,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                       contacts={remoteState.contacts}
                     />
                   </div>
+                  {props.children}
                 </div>
               </div>
               {/* <div className="layout ">

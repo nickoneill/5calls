@@ -9,6 +9,7 @@ interface FooterGroup {
 interface FooterLink {
   title: string;
   url: string;
+  brand?: boolean;
   icon: string;
 }
 
@@ -17,7 +18,11 @@ const Footer: React.StatelessComponent = () => {
     {
       name: '5 Calls',
       links: [
-        { title: 'About Us', url: '/about-us/', icon: 'heart' },
+        {
+          title: 'About Us',
+          url: '/about-us/',
+          icon: 'heart'
+        },
         {
           title: 'Why Calling Works',
           url: '/why-calling-works/',
@@ -28,7 +33,11 @@ const Footer: React.StatelessComponent = () => {
           url: 'https://5calls.org/archives/',
           icon: 'archive'
         },
-        { title: 'Privacy', url: 'https://5calls.org/privacy', icon: 'eye' }
+        {
+          title: 'Privacy',
+          url: 'https://5calls.org/privacy',
+          icon: 'eye'
+        }
       ]
     },
     {
@@ -38,6 +47,78 @@ const Footer: React.StatelessComponent = () => {
           title: 'Getting Started',
           url: '/getting-started/',
           icon: 'info-circle'
+        },
+        {
+          title: 'Troubleshooting',
+          url: '/troubleshooting/',
+          icon: 'question-circle'
+        },
+        {
+          title: 'Knowledge Base',
+          url:
+            'https://intercom.help/5calls/en/collections/1497141-using-the-5-calls-website-and-apps',
+          icon: 'book-reader'
+        },
+        {
+          title: 'Email Us',
+          url: 'mailto:hello@5calls.org',
+          icon: 'envelope-open-text'
+        }
+      ]
+    },
+    {
+      name: 'Get Involved',
+      links: [
+        {
+          title: 'Twitter',
+          url: 'https://twitter.com/make5calls',
+          brand: true,
+          icon: 'twitter'
+        },
+        {
+          title: 'Facebook',
+          url: 'https://www.facebook.com/make5calls',
+          brand: true,
+          icon: 'facebook'
+        },
+        {
+          title: 'Contribute on GitHub',
+          url: 'https://github.com/5calls/5calls',
+          brand: true,
+          icon: 'github'
+        },
+        {
+          title: 'Donate',
+          url:
+            'https://secure.actblue.com/contribute/page/5calls-donate?refcode=staticfooter',
+          icon: 'money-bill-wave'
+        }
+      ]
+    },
+    {
+      name: 'Account',
+      links: [
+        {
+          title: 'Profile',
+          url: 'https://5calls.org/profile',
+          icon: 'user-circle'
+        },
+        {
+          title: 'Your Impact',
+          url: 'https://5calls.org/impact/',
+          icon: 'chart-line'
+        },
+        {
+          title: 'Download for iOS',
+          url: 'https://crgj.app.link/7R2bEB0R4F',
+          brand: true,
+          icon: 'apple'
+        },
+        {
+          title: 'Download for Android',
+          url: 'https://crgj.app.link/7R2bEB0R4F',
+          brand: true,
+          icon: 'google-play'
         }
       ]
     }
@@ -64,7 +145,11 @@ const Footer: React.StatelessComponent = () => {
                   {group.links.map(link => {
                     return (
                       <li>
-                        <i className={`fa fa-fw fa-${link.icon}`} />{' '}
+                        <i
+                          className={`fa${link.brand ? 'b' : ''} fa-fw fa-${
+                            link.icon
+                          }`}
+                        />{' '}
                         <Link to={link.url}>{link.title}</Link>
                       </li>
                     );
