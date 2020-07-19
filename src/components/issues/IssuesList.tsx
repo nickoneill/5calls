@@ -26,8 +26,8 @@ export class IssuesList extends React.Component<Props> {
   listFooter = () => {
     return (
       <li>
-        <Link to={`/more`} className={`issues__footer-link`}>
-          <span>{i18n.t('issues.viewAllActiveIssues')}</span>
+        <Link to={`/more`} className={`i-bar-more`}>
+          {i18n.t('issues.viewAllActiveIssues')}
         </Link>
       </li>
     );
@@ -56,9 +56,7 @@ export class IssuesList extends React.Component<Props> {
         />
       ));
     } else {
-      return (
-        <div style={{ textAlign: 'center' }}>{i18n.t('noCalls.title')}</div>
-      );
+      return null;
     }
   };
 
@@ -66,10 +64,12 @@ export class IssuesList extends React.Component<Props> {
     return (
       <userStatsContext.Consumer>
         {userStatsState => (
-          <ul className="issues-list" role="navigation">
-            {this.listItems(userStatsState)}
+          <div className="i-bar-list">
+            <section className="i-bar-list-section">
+              {this.listItems(userStatsState)}
+            </section>
             {this.listFooter()}
-          </ul>
+          </div>
         )}
       </userStatsContext.Consumer>
     );

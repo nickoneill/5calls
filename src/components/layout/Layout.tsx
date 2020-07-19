@@ -51,7 +51,24 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                   />
                 )}
               </userStateContext.Consumer>
-              <div className="layout ">
+              <div className="content">
+                {props.extraComponent}
+                <div className="g">
+                  <div className="i-bar">
+                    <SidebarHeader />
+                    <Sidebar
+                      issues={remoteState.issues}
+                      currentIssue={currentIssue(
+                        remoteState.issues,
+                        callState.currentIssueId
+                      )}
+                      completedIssueIds={callState.completedIssueIds}
+                      contacts={remoteState.contacts}
+                    />
+                  </div>
+                </div>
+              </div>
+              {/* <div className="layout ">
                 <aside id="nav" role="contentinfo" className="layout__side">
                   <div className="issues">
                     <SidebarHeader />
@@ -74,8 +91,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                 >
                   {props.children}
                 </main>
-              </div>
-              {props.extraComponent}
+              </div> */}
               <Footer />
             </>
           )}
