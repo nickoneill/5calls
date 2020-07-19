@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Route, Switch, Router, Redirect } from 'react-router-dom';
+import { Route, Switch, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
 
@@ -11,9 +11,8 @@ import i18n from './services/i18n';
 import * as ReactGA from 'react-ga';
 
 import NotFoundPage from './components/NotFoundPage';
-import { HomePage } from './components/home';
+import { HomePage, WhyCallingWorks } from './components/home';
 import { AboutPage } from './components/about';
-import { PostcardsPage } from './components/postcards';
 import { FaqPage } from './components/faq';
 import { PrivacyPage } from './components/privacy';
 import { DonePage } from './components/done';
@@ -82,22 +81,16 @@ ReactDOM[method](
                   exact={true}
                   component={ProfilePageContainer}
                 />
+                <Route
+                  path="/why-calling-works"
+                  exact={true}
+                  component={WhyCallingWorks}
+                />
                 <Route path="/impact" exact={true} component={MyImpactPage} />
                 <Route path="/more" exact={true} component={MoreIssuesPage} />
-                <Route path="/midterms" exact={true}>
-                  <Redirect to="/" />
-                </Route>
                 <Route path="/faq" exact={true} component={FaqPage} />
                 <Route path="/privacy" exact={true} component={PrivacyPage} />
                 <Route path="/about" exact={true} component={AboutPage} />
-                <Route path="/phonebanks" exact={true}>
-                  <Redirect to="/" />
-                </Route>
-                <Route
-                  path="/postcards"
-                  exact={true}
-                  component={PostcardsPage}
-                />
                 <Route
                   path="/auth0callback"
                   exact={true}

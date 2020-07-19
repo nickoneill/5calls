@@ -13,6 +13,7 @@ interface Props {
   readonly children?: {};
   readonly extraHeader?: React.ReactNode;
   readonly extraBody?: React.ReactNode;
+  readonly showSidebar?: boolean;
 }
 
 function currentIssue(
@@ -50,25 +51,28 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                   />
                 )}
               </userStateContext.Consumer>
-              <div className="content">
-                {props.extraHeader}
-                <div className="g">
-                  {props.extraBody}
-                  <div className="i-bar">
-                    <SidebarHeader />
-                    <Sidebar
-                      issues={remoteState.issues}
-                      currentIssue={currentIssue(
-                        remoteState.issues,
-                        callState.currentIssueId
-                      )}
-                      completedIssueIds={callState.completedIssueIds}
-                      contacts={remoteState.contacts}
-                    />
+              {props.showSidebar && (
+                <div className="content">
+                  {props.extraHeader}
+                  <div className="g">
+                    {props.extraBody}
+                    <div className="i-bar">
+                      <SidebarHeader />
+                      <Sidebar
+                        issues={remoteState.issues}
+                        currentIssue={currentIssue(
+                          remoteState.issues,
+                          callState.currentIssueId
+                        )}
+                        completedIssueIds={callState.completedIssueIds}
+                        contacts={remoteState.contacts}
+                      />
+                    </div>
+                    {props.children}
                   </div>
-                  {props.children}
                 </div>
-              </div>
+              )}
+              {!props.showSidebar && <>{props.children}</>}
               {/* <div className="layout ">
                 <aside id="nav" role="contentinfo" className="layout__side">
                   <div className="issues">
@@ -101,5 +105,7 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
     )}
   </remoteStateContext.Consumer>
 );
+
+Layout.defaultProps = { showSidebar: true };
 
 export default Layout;

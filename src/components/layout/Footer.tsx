@@ -139,12 +139,12 @@ const Footer: React.StatelessComponent = () => {
         <div className="g g-4up">
           {footerData.map(group => {
             return (
-              <div>
+              <div key={group.name}>
                 <h4>{group.name}</h4>
                 <ul>
                   {group.links.map(link => {
                     return (
-                      <li>
+                      <li key={link.url}>
                         <i
                           className={`fa${link.brand ? 'b' : ''} fa-fw fa-${
                             link.icon
