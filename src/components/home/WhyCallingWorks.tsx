@@ -132,22 +132,20 @@ export const WhyCallingWorks: React.StatelessComponent = () => {
         <h2>Don’t just take it from us.</h2>
 
         <div className="g g-3up">
-          {newsClips.map(clip => {
-            return (
-              <p className="news-clip">
-                <Link to={clip.url}>
-                  <span className="news-clip-head">
-                    <img
-                      src={`/img/${clip.source.logo}`}
-                      alt={clip.source.name}
-                    />
-                    <i className="fa fa-external-link-alt" />
-                  </span>
-                  <span className="news-clip-body">{clip.quote}</span>
-                </Link>
-              </p>
-            );
-          })}
+          {newsClips.map(clip => (
+            <p className="news-clip">
+              <Link to={clip.url}>
+                <span className="news-clip-head">
+                  <img
+                    src={`/img/${clip.source.logo}`}
+                    alt={clip.source.name}
+                  />
+                  <i className="fa fa-external-link-alt" />
+                </span>
+                <span className="news-clip-body">{clip.quote}</span>
+              </Link>
+            </p>
+          ))}
         </div>
 
         <h2>Ready to get started?</h2>

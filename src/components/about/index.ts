@@ -1,4 +1,3 @@
-import { About, AboutTranslatable } from './About';
-import AboutPage from './AboutPage';
+import { AboutPage } from './About';
 
-export { About, AboutTranslatable, AboutPage };
+export { AboutPage };

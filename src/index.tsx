@@ -11,9 +11,13 @@ import i18n from './services/i18n';
 import * as ReactGA from 'react-ga';
 
 import NotFoundPage from './components/NotFoundPage';
-import { HomePage, WhyCallingWorks } from './components/home';
+import {
+  HomePage,
+  WhyCallingWorks,
+  GettingStarted,
+  Troubleshooting
+} from './components/home';
 import { AboutPage } from './components/about';
-import { FaqPage } from './components/faq';
 import { PrivacyPage } from './components/privacy';
 import { DonePage } from './components/done';
 import { MoreIssuesPage } from './components/issues';
@@ -86,11 +90,21 @@ ReactDOM[method](
                   exact={true}
                   component={WhyCallingWorks}
                 />
+                <Route path="/about-us" exact={true} component={AboutPage} />
+                <Route
+                  path="/getting-started"
+                  exact={true}
+                  component={GettingStarted}
+                />
+                <Route
+                  path="/troubleshooting"
+                  exact={true}
+                  component={Troubleshooting}
+                />
                 <Route path="/impact" exact={true} component={MyImpactPage} />
                 <Route path="/more" exact={true} component={MoreIssuesPage} />
-                <Route path="/faq" exact={true} component={FaqPage} />
+                {/* <Route path="/faq" exact={true} component={FaqPage} /> */}
                 <Route path="/privacy" exact={true} component={PrivacyPage} />
-                <Route path="/about" exact={true} component={AboutPage} />
                 <Route
                   path="/auth0callback"
                   exact={true}
