@@ -1,5 +1,4 @@
 import { Action } from 'redux';
-import { LocationAction } from './action';
 import { LocationFetchType } from '../../common/models';
 
 export enum LocationActionType {

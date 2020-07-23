@@ -12,14 +12,21 @@ interface Props {
 
 const Sidebar: React.StatelessComponent<Props> = (props: Props) => {
   return (
-    <IssuesList
-      issues={props.issues}
-      currentIssue={props.currentIssue}
-      completedIssueIds={props.completedIssueIds}
-      getIssuesIfNeeded={getIssuesIfNeeded}
-      getContactsIfNeeded={getContactsIfNeeded}
-      contacts={props.contacts}
-    />
+    <section className="i-bar-list-section">
+      <header className="i-bar-header i-bar-header-unsorted">
+        <h3>
+          <i className="fa fa-newspaper" /> In the News
+        </h3>
+      </header>
+      <IssuesList
+        issues={props.issues}
+        currentIssue={props.currentIssue}
+        completedIssueIds={props.completedIssueIds}
+        getIssuesIfNeeded={getIssuesIfNeeded}
+        getContactsIfNeeded={getContactsIfNeeded}
+        contacts={props.contacts}
+      />
+    </section>
   );
 };
 

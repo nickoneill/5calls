@@ -46,6 +46,7 @@ class CallPageView extends React.Component<Props> {
 
   render() {
     const issueid = this.getIssueIdFromLocation();
+    console.log('issue id is ', issueid);
     if (!issueid) {
       return null;
     }

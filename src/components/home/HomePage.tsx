@@ -3,6 +3,7 @@ import { RouteComponentProps } from 'react-router-dom';
 
 import { Layout } from '../layout';
 import { remoteStateContext } from '../../contexts/RemoteStateContext';
+import { formatNumber } from '../shared/utils';
 
 interface Props extends RouteComponentProps<{ id: string }> {}
 
@@ -14,7 +15,7 @@ interface Props extends RouteComponentProps<{ id: string }> {}
   Notice that we are just passing all of the props that we pull off the Redux Store through
   this component to child components
 */
-export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
+export const HomePage: React.SFC<Props> = (props: Props) => (
   <remoteStateContext.Consumer>
     {state => (
       <Layout
@@ -41,7 +42,8 @@ export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
             <i className="fa fa-fw fa-hand-holding-heart" />
             <div className="card-home-body">
               <h2 className="h3">
-                We've made 2,690,317 calls so far. Join&nbsp;us.
+                We've made {formatNumber(state.callTotal)} calls so far.
+                Join&nbsp;us.
               </h2>
               <p>
                 Pick an issue from the list, or{' '}
@@ -83,7 +85,7 @@ export const HomePage: React.StatelessComponent<Props> = (props: Props) => (
                   <input
                     type="text"
                     placeholder="leslie.knope@pawnee.gov"
-                    name="email"
+                    name="MERGE0"
                     id="email"
                   />
                   <input type="submit" className="button" value="Subscribe" />

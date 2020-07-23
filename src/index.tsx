@@ -4,7 +4,7 @@ import { Route, Switch, Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { I18nextProvider } from 'react-i18next';
 
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory } from 'history';
 import createStore, { persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
 import i18n from './services/i18n';
@@ -48,7 +48,7 @@ const trackPageView = location => {
 
 const ErrorBoundary = bugsnagClient.getPlugin('react');
 
-const history = createHistory();
+const history = createBrowserHistory();
 trackPageView(history.location);
 history.listen(trackPageView);
 
@@ -74,6 +74,7 @@ ReactDOM[method](
             <Router history={history}>
               <Switch>
                 <Route path="/" exact={true} component={HomePage} />
+                <Route path="/issue/" exact={true} component={CallPage} />
                 <Route
                   path="/issue/:issueid"
                   exact={true}
@@ -103,7 +104,6 @@ ReactDOM[method](
                 />
                 <Route path="/impact" exact={true} component={MyImpactPage} />
                 <Route path="/more" exact={true} component={MoreIssuesPage} />
-                {/* <Route path="/faq" exact={true} component={FaqPage} /> */}
                 <Route path="/privacy" exact={true} component={PrivacyPage} />
                 <Route
                   path="/auth0callback"

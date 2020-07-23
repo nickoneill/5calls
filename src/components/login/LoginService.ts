@@ -85,7 +85,7 @@ export class LoginService {
           },
           (error: auth0base.Auth0Error | null) => {
             if (error) {
-              console.error('Auth0 LoginService.signup() error', error);
+              // console.error('Auth0 LoginService.signup() error', error);
               const results = error.description;
               reject(results);
             } else {
@@ -105,7 +105,7 @@ export class LoginService {
         this.auth0.login(
           { realm: databaseConnection, username, password },
           (error: auth0base.Auth0Error | null) => {
-            console.error('Auth0 LoginService.login() error', error);
+            // console.error('Auth0 LoginService.login() error', error);
             if (error) {
               const results = error.description;
               reject(results);
@@ -127,7 +127,7 @@ export class LoginService {
         {
           connection: 'twitter'
         },
-        (err: auth0base.Auth0Error, authResult: any) => {
+        (err: auth0base.Auth0Error, authResult: {}) => {
           // handled in handleAuthentication
         }
       );
@@ -167,7 +167,7 @@ export class LoginService {
       this.auth0.parseHash((error, authResult) => {
         if (!authResult) {
           // tslint:disable-next-line:no-console
-          console.error('Auth0.parseHash() error', error);
+          // console.error('Auth0.parseHash() error', error);
           reject(error);
         } else {
           const authResponse: AuthResponse = this.decodeAndSetProfile(

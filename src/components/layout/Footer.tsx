@@ -110,13 +110,15 @@ const Footer: React.StatelessComponent = () => {
         },
         {
           title: 'Download for iOS',
-          url: 'https://crgj.app.link/7R2bEB0R4F',
+          url:
+            'https://apps.apple.com/us/app/5-calls-contact-your-congress/id1202558609',
           brand: true,
           icon: 'apple'
         },
         {
           title: 'Download for Android',
-          url: 'https://crgj.app.link/7R2bEB0R4F',
+          url:
+            'https://play.google.com/store/apps/details?id=org.a5calls.android.a5calls&hl=en_US',
           brand: true,
           icon: 'google-play'
         }
@@ -142,18 +144,16 @@ const Footer: React.StatelessComponent = () => {
               <div key={group.name}>
                 <h4>{group.name}</h4>
                 <ul>
-                  {group.links.map(link => {
-                    return (
-                      <li key={link.url}>
-                        <i
-                          className={`fa${link.brand ? 'b' : ''} fa-fw fa-${
-                            link.icon
-                          }`}
-                        />{' '}
-                        <Link to={link.url}>{link.title}</Link>
-                      </li>
-                    );
-                  })}
+                  {group.links.map(link => (
+                    <li key={link.url}>
+                      <i
+                        className={`fa${link.brand ? 'b' : ''} fa-fw fa-${
+                          link.icon
+                        }`}
+                      />{' '}
+                      <Link to={link.url}>{link.title}</Link>
+                    </li>
+                  ))}
                 </ul>
               </div>
             );

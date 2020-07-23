@@ -1,5 +1,4 @@
 import { Action } from 'redux';
-import { CallStateAction } from './index';
 
 export enum CallStateActionType {
   CURRENT_ISSUE_SELECTED = 'CURRENT_ISSUE_SELECTED',

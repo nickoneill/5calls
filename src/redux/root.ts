@@ -1,15 +1,12 @@
 import storage from 'redux-persist/lib/storage';
 import getStoredState from 'redux-persist/lib/integration/getStoredStateMigrateV4';
 
-import { ApplicationState } from './root';
 import { LocationState, locationStateReducer } from './location';
 import { CallState, callStateReducer } from './callState';
 import { RemoteDataState, remoteDataReducer } from './remoteData';
 import { UserStatsState, userStatsReducer } from './userStats';
 import { UserState, userStateReducer } from './userState';
 import { persistCombineReducers } from 'redux-persist';
-import { defaultRemoteDataState } from './remoteData/reducer';
-import { defaultUserStatsState } from './userStats/reducer';
 
 export enum OutcomeType {
   UNAVAILABLE = 'unavailable',
@@ -25,14 +22,6 @@ export interface ApplicationState {
   userStatsState: UserStatsState;
   userState: UserState;
 }
-
-export const DefaultApplicationState: ApplicationState = {
-  remoteDataState: defaultRemoteDataState,
-  callState: {} as CallState,
-  locationState: {} as LocationState,
-  userStatsState: defaultUserStatsState,
-  userState: {} as UserState
-};
 
 // DANGER: TypeScript magic ahead!!
 // These articles should help your understanding of this section:
@@ -79,7 +68,7 @@ const config = {
   getStoredState: getStoredState(v4config)
 };
 
-const rootReducer = persistCombineReducers(config, {
+const rootReducer = persistCombineReducers<ApplicationState>(config, {
   remoteDataState: remoteDataReducer,
   callState: callStateReducer,
   locationState: locationStateReducer,

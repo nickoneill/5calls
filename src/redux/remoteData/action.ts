@@ -1,4 +1,3 @@
-import { RemoteDataAction } from './action';
 import { Action } from 'redux';
 import { Issue, ContactList } from '../../common/models';
 

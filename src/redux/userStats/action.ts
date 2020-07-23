@@ -1,5 +1,5 @@
 import { Action } from 'redux';
-import { UserStatsAction, UserStatsState, UserContactEvent } from './index';
+import { UserStatsState, UserContactEvent } from './index';
 
 export enum UserStatsActionType {
   SET_USER_STATS = 'SET_USER_STATS',
