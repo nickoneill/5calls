@@ -8,6 +8,7 @@ import {
   callStateContext,
   userStateContext
 } from '../../contexts';
+import { Link } from 'react-router-dom';
 
 interface Props {
   readonly children?: {};
@@ -58,15 +59,21 @@ const Layout: React.StatelessComponent<Props> = (props: Props) => (
                     {props.extraBody}
                     <div className="i-bar">
                       <SidebarHeader />
-                      <Sidebar
-                        issues={remoteState.issues}
-                        currentIssue={currentIssue(
-                          remoteState.issues,
-                          callState.currentIssueId
-                        )}
-                        completedIssueIds={callState.completedIssueIds}
-                        contacts={remoteState.contacts}
-                      />
+                      <div className="i-bar-list">
+                        <Sidebar
+                          issues={remoteState.issues}
+                          currentIssue={currentIssue(
+                            remoteState.issues,
+                            callState.currentIssueId
+                          )}
+                          completedIssueIds={callState.completedIssueIds}
+                          contacts={remoteState.contacts}
+                        />
+                      </div>
+                      <Link to={`/more`} className={`i-bar-more`}>
+                        {`See all ${remoteState.inactiveIssues.length +
+                          remoteState.issues.length} issues`}
+                      </Link>
                     </div>
                     {props.children}
                   </div>

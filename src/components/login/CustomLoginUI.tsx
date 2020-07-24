@@ -61,7 +61,6 @@ export class CustomLoginUI extends React.Component<
   };
 
   toggleModal = (): void => {
-    console.log('needed login modal');
     this.setState({
       shouldDisplayLoginModal: !this.state.shouldDisplayLoginModal
     });

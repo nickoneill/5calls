@@ -1,6 +1,4 @@
 import * as React from 'react';
-import i18n from '../../services/i18n';
-import { Link } from 'react-router-dom';
 
 import { Issue, ContactList } from '../../common/models';
 import { IssuesListItem } from './index';
@@ -22,16 +20,6 @@ export class IssuesList extends React.Component<Props> {
     this.props.getIssuesIfNeeded();
     this.props.getContactsIfNeeded(false);
   }
-
-  listFooter = () => {
-    return (
-      <li>
-        <Link to={`/more`} className={`i-bar-more`}>
-          {i18n.t('issues.viewAllActiveIssues')}
-        </Link>
-      </li>
-    );
-  };
 
   listItems = (userStatsState: UserStatsState) => {
     const { contacts, issues } = this.props;
@@ -63,14 +51,7 @@ export class IssuesList extends React.Component<Props> {
   render() {
     return (
       <userStatsContext.Consumer>
-        {userStatsState => (
-          <div className="i-bar-list">
-            <section className="i-bar-list-section">
-              {this.listItems(userStatsState)}
-            </section>
-            {this.listFooter()}
-          </div>
-        )}
+        {userStatsState => this.listItems(userStatsState)}
       </userStatsContext.Consumer>
     );
   }
