@@ -30,12 +30,12 @@ const Footer: React.StatelessComponent = () => {
         },
         {
           title: 'Topic Archives',
-          url: 'https://5calls.org/archives/',
+          url: '/archives/',
           icon: 'archive'
         },
         {
           title: 'Privacy',
-          url: 'https://5calls.org/privacy',
+          url: '/privacy/',
           icon: 'eye'
         }
       ]
@@ -100,12 +100,12 @@ const Footer: React.StatelessComponent = () => {
       links: [
         {
           title: 'Profile',
-          url: 'https://5calls.org/profile',
+          url: '/profile',
           icon: 'user-circle'
         },
         {
           title: 'Your Impact',
-          url: 'https://5calls.org/impact/',
+          url: '/impact',
           icon: 'chart-line'
         },
         {
@@ -150,7 +150,12 @@ const Footer: React.StatelessComponent = () => {
                         link.icon
                       }`}
                     />{' '}
-                    <Link to={link.url}>{link.title}</Link>
+                    {link.url.startsWith('http') ||
+                    link.url.startsWith('mailto') ? (
+                      <a href={link.url}>{link.title}</a>
+                    ) : (
+                      <Link to={link.url}>{link.title}</Link>
+                    )}
                   </li>
                 ))}
               </ul>
