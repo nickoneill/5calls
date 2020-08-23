@@ -29,6 +29,18 @@
     margin-bottom: 30px;
   }
 
+  &__voternetwork {
+    border: 1px solid #fff;
+    margin-bottom: 10px;
+
+    img {
+      width: 100px;
+      margin-top: 20px;
+      margin-right: 25px;
+      float: left;
+    }
+  }
+
   &__text {
     .progress {
       margin-bottom: 30px;

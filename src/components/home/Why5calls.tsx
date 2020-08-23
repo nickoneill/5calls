@@ -16,6 +16,18 @@ const Why5calls: React.StatelessComponent<Props> = (props: Props) => (
         citizens to make an impact in national and local politics
       </h2>
     </header>
+    <div className="hypothesis__voternetwork">
+      <a href="https://voternetwork.us/app">
+        <img src="/img/voter-network-logo.png" alt="Voter Network" />
+      </a>
+      <h2>Want to help your friends vote?</h2>
+      <p>
+        <strong>NEW for the 2020 Election: </strong>Download{' '}
+        <a href="https://voternetwork.us/app">our Voter Network app today</a>,
+        automatically find friends and family that need help registering to vote
+        or applying to vote by mail.
+      </p>
+    </div>
     <div className="hypothesis__text">
       <a href={Constants.contact.apps}>
         <img src="/img/5calls-apps.png" className="hypothesis__text__mobile" />
