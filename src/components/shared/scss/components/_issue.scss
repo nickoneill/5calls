@@ -1,3 +1,61 @@
 section.call {
   grid-column: 7 / span 8;
+
+  .contact-progress {
+    h3 {
+      margin-bottom: 4px;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        margin-bottom: 2px;
+        padding: 4px;
+        height: 50px;
+        background-color: var(--c-xlight-base);
+        border-left: 3px solid var(--c-xlight-base);
+        overflow: hidden;
+
+        &.active {
+          border-left-color: var(--c-blue);
+        }
+
+        img {
+          margin: 3px 6px 0 3px;
+          width: 36px;
+          height: 36px;
+          border-radius: 18px;
+          float: left;
+          object-fit: cover;
+        }
+
+        a {
+          color: var(--c-blue);
+          // text-decoration: underline;
+        }
+
+        h4 {
+          margin: 0 0 0 0;
+          font-size: 17px;
+          font-weight: bold;
+        }
+
+        p {
+          font-size: 15px;
+          a {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+
+    .help {
+      margin: 4px 0 0 6px;
+      font-size: 14px;
+      font-style: italic;
+    }
+  }
 }
