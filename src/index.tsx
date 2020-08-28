@@ -103,7 +103,6 @@ ReactDOM[method](
                 />
                 <Route path="/impact" exact={true} component={MyImpactPage} />
                 <Route path="/more" exact={true} component={MoreIssuesPage} />
-                {/* <Route path="/faq" exact={true} component={FaqPage} /> */}
                 <Route path="/privacy" exact={true} component={PrivacyPage} />
                 <Route
                   path="/auth0callback"

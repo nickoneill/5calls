@@ -1,8 +1,10 @@
-section.call {
+.call {
   grid-column: 7 / span 8;
 
   .contact-progress {
     h3 {
+      text-align: left;
+      font-weight: bold;
       margin-bottom: 4px;
     }
 
@@ -56,6 +58,216 @@ section.call {
       margin: 4px 0 0 6px;
       font-size: 14px;
       font-style: italic;
+    }
+  }
+
+  &__contact {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    font-weight: bold;
+
+    @include bp(large) {
+      flex-direction: row;
+      margin-bottom: 1rem;
+      align-items: center;
+    }
+
+    &__image {
+      @include bp(large) {
+        margin-right: 2rem;
+      }
+
+      img {
+        height: 7rem;
+        width: 7rem;
+
+        @include bp(medium) {
+          height: 8.5rem;
+          width: 8.5rem;
+        }
+
+        border-radius: 50%;
+      }
+    }
+
+    &__name {
+      margin: 0;
+      padding: 0;
+
+      font-size: 1.8rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+
+      @include bp(small) {
+        font-size: 2.5rem;
+      }
+
+      @include bp(large) {
+        font-size: 2.75rem;
+        margin-bottom: 0;
+      }
+
+      span {
+        font-weight: normal;
+      }
+    }
+
+    &__phone {
+      font-size: 2.4rem;
+
+      @include bp(small) {
+        font-size: 3rem;
+      }
+
+      @include bp(large) {
+        font-size: 4.25rem;
+        margin-top: 0;
+      }
+      padding-top: 0;
+      line-height: 1em;
+    }
+
+    &__show-field-offices {
+      font-size: 1rem;
+
+      a {
+        cursor: pointer;
+      }
+    }
+
+    &__field-offices__header {
+      margin: 0;
+    }
+
+    &__field-office-list {
+      font-size: 1.4rem;
+      line-height: 1.4em;
+      list-style: none;
+      margin: 0 0 16px 0;
+      padding: 0;
+    }
+  }
+
+  &__nocontact {
+    background-color: #eee;
+    padding: 3px 18px;
+    border-radius: 10px;
+
+    h2 {
+      font-size: 1.6rem;
+      margin-top: 12px;
+    }
+    p {
+      line-height: 1.4em;
+      margin: 0 0 16px 0;
+    }
+    a {
+      cursor: pointer;
+    }
+  }
+
+  &__script {
+    clear: both;
+    padding-top: 20px;
+
+    &__link {
+      font-size: 36px;
+      margin: 20px 0 10px 0;
+
+      a {
+        text-decoration: underline;
+      }
+    }
+
+    &__body {
+      background-color: --c-base;
+      padding: 20px;
+    }
+  }
+
+  &__contact__type,
+  &__contact__reason__header,
+  &__contact__field-offices__header,
+  &__script__header,
+  &__outcomes__header {
+    font-weight: bold;
+    font-size: 1.6rem;
+  }
+
+  &__outcomes {
+    margin: auto auto 24px auto;
+    padding: 0;
+
+    &.preview {
+      opacity: 0.4;
+
+      button {
+        &:hover {
+          color: --c-blue;
+          background-color: --c-blue;
+          cursor: inherit;
+        }
+      }
+    }
+
+    &__items {
+      display: flex;
+      flex-wrap: wrap;
+
+      button {
+        text-transform: uppercase;
+        font-weight: 600;
+        cursor: pointer;
+
+        flex-grow: 1;
+        font-size: 1.3rem;
+        flex-basis: 180px;
+        margin: 2px;
+        text-align: center;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        -webkit-font-smoothing: antialiased;
+        color: #fff;
+        background-color: rgb(24, 117, 209);
+        border: 1px solid darken(rgb(24, 117, 209), 10%);
+
+        &:hover,
+        &:focus {
+          background-color: darken(rgb(24, 117, 209), 5%);
+        }
+        &:hover {
+          box-shadow: 0 1px 10px fade-out(rgb(24, 117, 209), 0.15);
+        }
+        &:focus {
+          outline: none;
+          box-shadow: 0 0 0 0.2rem fade-out(rgb(24, 117, 209), 0.4);
+        }
+
+        @include bp(small) {
+          font-size: 1.2rem;
+        }
+
+        @include bp(medium) {
+          flex-basis: 150px;
+        }
+
+        @include bp(large) {
+          border-radius: 0;
+          border-left-width: 0;
+          &:first-of-type {
+            border-top-left-radius: 6px;
+            border-bottom-left-radius: 6px;
+            border-left-width: 1px;
+          }
+          &:last-of-type {
+            border-top-right-radius: 6px;
+            border-bottom-right-radius: 6px;
+          }
+        }
+      }
     }
   }
 }

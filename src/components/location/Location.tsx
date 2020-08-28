@@ -79,7 +79,7 @@ export class Location extends React.Component<Props, State> {
       });
   }
 
-  manuallySetLocation(e: React.MouseEvent<HTMLAnchorElement>) {
+  manuallySetLocation(e: React.MouseEvent<HTMLButtonElement>) {
     e.preventDefault();
 
     this.setState({ uiState: LocationUIState.ENTERING_LOCATION });
@@ -106,8 +106,6 @@ export class Location extends React.Component<Props, State> {
     const newLocation = e.currentTarget.elements['address'].value;
 
     if (newLocation === '') {
-      // tslint:disable-next-line:no-console
-      console.error('not the right behavior anymore');
       // if the user hits "Go" with no location, clear what they had and refresh to try the default again
       store.dispatch(clearAddress());
       window.location.reload();
@@ -121,87 +119,76 @@ export class Location extends React.Component<Props, State> {
 
   noLocation() {
     return (
-      <>
-        <button
-          className="btn btn-outline"
-          id="setLocationMessage"
-          onClick={e => this.enterLocation(e)}
-        >
+      <div className="is-visible">
+        <span>Get started by setting your location</span>
+        <button className="button-link" onClick={e => this.enterLocation(e)}>
+          {' '}
           Set your location
         </button>
-      </>
+      </div>
     );
   }
 
   findingLocation() {
     return (
-      <>
-        <p className="loadingAnimation">
-          Getting your location automatically...
-        </p>
-        <p className="help">
-          <a href="#" onClick={e => this.manuallySetLocation(e)}>
-            Or enter an address manually
-          </a>
-        </p>
-      </>
+      <div className="is-visible">
+        <span className="i-bar-loading">
+          <i className="fa fa-map-marker" />{' '}
+          <b>Getting your location automatically&hellip;</b>
+        </span>
+        <button
+          className="button-link"
+          onClick={e => this.manuallySetLocation(e)}
+        >
+          {' '}
+          Or enter an address manually
+        </button>
+      </div>
     );
   }
 
   enteringLocation() {
     return (
-      <>
-        <p>Enter an address or zip code</p>
-        <form onSubmit={e => this.submitLocation(e)} className="input-group">
+      <div className="is-visible">
+        <span>Enter an address or ZIP code</span>
+        <form onSubmit={e => this.submitLocation(e)}>
           <input
             type="text"
-            autoFocus={true}
-            id="address"
             name="address"
             placeholder="1600 Pennsylvania Ave NW, Washington, DC 20500"
           />
-          <button className="btn btn-secondary">Go</button>
+          <button className="button button-small button-red">Go</button>
         </form>
-      </>
+      </div>
     );
   }
 
   locationFound() {
     return (
-      <>
-        <p id="locationMessage">
-          Your location: <span>{this.props.locationState.cachedCity}</span>
-        </p>
-        <button
-          className="btn btn-outline"
-          onClick={e => this.enterLocation(e)}
-        >
-          Change Location
+      <div className="is-visible">
+        <span>Showing representatives for</span>
+        <strong>{this.props.locationState.cachedCity}</strong>
+        <button className="button-link" onClick={e => this.enterLocation(e)}>
+          Change location
         </button>
-      </>
+      </div>
     );
   }
 
   render() {
-    return (
-      <div className="location">
-        {(() => {
-          switch (this.state.uiState) {
-            case LocationUIState.NO_LOCATION:
-              return this.noLocation();
-            case LocationUIState.LOCATION_ERROR:
-              return <h1>error lol</h1>;
-            case LocationUIState.LOCATION_FOUND:
-              return this.locationFound();
-            case LocationUIState.FETCHING_LOCATION:
-              return this.findingLocation();
-            case LocationUIState.ENTERING_LOCATION:
-              return this.enteringLocation();
-            default:
-              return <>no state for {this.state.uiState}</>;
-          }
-        })()}
-      </div>
-    );
+    switch (this.state.uiState) {
+      case LocationUIState.NO_LOCATION:
+        return this.noLocation();
+      case LocationUIState.LOCATION_ERROR:
+        return <h1>error lol</h1>;
+      case LocationUIState.LOCATION_FOUND:
+        return this.locationFound();
+      case LocationUIState.FETCHING_LOCATION:
+        return this.findingLocation();
+      case LocationUIState.ENTERING_LOCATION:
+        return this.enteringLocation();
+      default:
+        return <>no state for {this.state.uiState}</>;
+    }
   }
 }

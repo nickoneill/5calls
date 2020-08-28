@@ -75,10 +75,10 @@ const GettingStarted: React.StatelessComponent = () => {
 
             <p>
               Follow us on{' '}
-              <Link to="https://www.facebook.com/make5calls">Facebook</Link>
+              <a href="https://www.facebook.com/make5calls">Facebook</a>
               {` `}
-              and <Link to="https://twitter.com/make5calls">Twitter</Link> to
-              learn about new issues. Or subscribe to our{' '}
+              and <a href="https://twitter.com/make5calls">Twitter</a> to learn
+              about new issues. Or subscribe to our{' '}
               <Link to="/">weekly newsletter</Link>.
             </p>
           </div>

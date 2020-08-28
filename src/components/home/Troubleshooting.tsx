@@ -128,15 +128,15 @@ const Troubleshooting: React.StatelessComponent = () => {
           <div className="measure">
             <p>
               For more help, check out our{' '}
-              <Link to="https://intercom.help/5calls/en/collections/1497141-using-the-5-calls-website-and-apps">
+              <a href="https://intercom.help/5calls/en/collections/1497141-using-the-5-calls-website-and-apps">
                 knowledge base
-              </Link>{' '}
-              and [guide to getting started](/getting-started/).
+              </a>{' '}
+              and <Link to="/getting-started/">guide to getting started</Link>.
             </p>
 
             <p>
-              If you still can’t find what you’re looking for, email us at
-              <Link to="mailto:hello@5calls.org">hello@5calls.org</Link>.
+              If you still can’t find what you’re looking for, email us at{` `}
+              <a href="mailto:hello@5calls.org">hello@5calls.org</a>.
             </p>
           </div>
         </div>

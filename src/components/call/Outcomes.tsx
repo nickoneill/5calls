@@ -110,7 +110,6 @@ class Outcomes extends React.Component<
             <div className="call__outcomes__items">
               {this.props.currentIssue.outcomeModels.map((outcome, index) => (
                 <button
-                  className="btn btn-secondary"
                   key={index}
                   onClick={e => this.dispatchOutcome(e, outcome.label)}
                 >
