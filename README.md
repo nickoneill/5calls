@@ -1,5 +1,7 @@
 # 5calls
 
+This repository is no longer used for the 5calls.org frontend
+
 ## Quicknav
 ### Automated testing
 [![CircleCI](https://circleci.com/gh/5calls/5calls.svg?style=svg)](https://circleci.com/gh/5calls/5calls)
